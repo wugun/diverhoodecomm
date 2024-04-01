@@ -1,0 +1,10 @@
+<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Rectangle -->
+  <rect width="200" height="100" fill="#F0F0F0"/>
+  
+  <!-- D Letter -->
+  <path d="M30,20 Q50,20 50,50 Q50,80 30,80 L50,80 Q70,80 70,50 Q70,20 50,20 M50,20 L30,20 Z" fill="#7B1FA2"/>
+  
+  <!-- Brand Name -->
+  <text x="75" y="60" font-family="'Lucida Console', Monaco, monospace" font-size="24" fill="#333">iverhood</text>
+</svg>
