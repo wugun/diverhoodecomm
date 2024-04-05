@@ -43,6 +43,12 @@ export default {
         to: [{ type: 'category' }],
       },
       {
+        name: 'company',
+        title: 'Company',
+        type: 'reference',
+        to: [{ type: 'company' }],
+      },
+      {
         name: 'colors',
         title: 'Colors',
         type: 'array',

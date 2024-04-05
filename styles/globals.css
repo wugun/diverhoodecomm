@@ -111,6 +111,9 @@ width: 100%;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
  color: #324d67;
+ width: 250px; /* Set a fixed width for each card */
+ min-height: 300px; /* Set a minimum height for each card */
+ background-color: #ffffff; /* Example background color */
 
 }
 .product-card:hover{
@@ -121,11 +124,19 @@ width: 100%;
  background-color: #ebebeb;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
+  width: 100%; /* Ensure the image fills the entire width of the card */
+  height: 150px; /* Set a fixed height for the image */
+  object-fit: cover; /* Ensure the image covers the entire space without distortion */
 }
 
 .product-name{
   font-weight: 500;
+  height: 30px; /* Set a fixed height for the product name container */
+  overflow: hidden; /* Hide any overflowing content */
+  text-overflow: ellipsis; /* Show ellipsis (...) for truncated text */
+  white-space: nowrap; /* Prevent wrapping of text */
 }
+
 .product-price{
   font-weight: 800;
   margin-top: 6px;
@@ -250,8 +261,8 @@ text-align: end;
 }
 .footer-banner-image{
   position: absolute;
-  /* top: -35%;
-  left: 8%; */
+  top: -35%;
+  left: 8%; 
   top: -25%;
   left: 25%;
 }
@@ -659,8 +670,17 @@ margin-top: 160px;
   margin-top: 20px;
 }
 
-.ml {
-  margin-left: 20px;
+.filter-card-container {
+  display: flex;
+}
+
+.filter-card {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-right: 10px; /* Adjust margin between cards as needed */
 }
 
 .sidebar-title {
@@ -768,28 +788,6 @@ margin-top: 160px;
   font-size: 20px;
 }
 
-.sidebar-title {
-  font-size: 22px;
-  font-weight: normal;
-  margin-bottom: 20px;
-}
-
-.sidebar-items {
-  margin-top: 20px;
-}
-
-.sidebar-label-container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 .sidebar-label-container input {
   position: absolute;
   opacity: 0;
@@ -850,14 +848,10 @@ margin-top: 160px;
   margin-top: 20px;
 }
 
-.ml {
-  margin-left: 20px;
-}
-
 .sidebar {
   width: 15%;
   position: fixed;
-  height: 100%;
+  overflow-y: auto;
   border-right: 2px solid #e5e5e5;
   z-index: 3;
   display: flex;

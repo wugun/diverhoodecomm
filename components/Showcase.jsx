@@ -35,6 +35,7 @@ const Showcase = () => {
         if (response.ok) {
           const result = await response.json();
           setAllPosts(result.data.reverse());
+          console.log(allPosts);
         }
       } catch (err) {
         alert(err);
@@ -58,13 +59,9 @@ const Showcase = () => {
         }, 500),
       );
     };
-  
+
     return (
       <section className="max-w-7xl mx-auto">
-        <div>
-          <h1 className="font-extrabold text-[#222328] text-[32px]">Diver Showcase</h1>
-          <p className="mt-2 text-[#666e75] text-[14px] max-w-[500px]">Get inspired by AI-powered furniture designs from other divers</p>
-        </div>
   
         <div className="mt-16">
           <FormField

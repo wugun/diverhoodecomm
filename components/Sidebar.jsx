@@ -1,5 +1,5 @@
 import React from 'react';
-import { Category, Price, Colors } from "./";
+import { Category, Price, Colors, Styles } from "./";
 
 const Sidebar = ({ handleChange }) => {
   return (
@@ -9,6 +9,7 @@ const Sidebar = ({ handleChange }) => {
           <h1>🛒</h1>
         </div>
         <Category handleChange={handleChange} />
+        <Styles handleChange={handleChange} />
         <Price handleChange={handleChange} />
         <Colors handleChange={handleChange} />
       </section>

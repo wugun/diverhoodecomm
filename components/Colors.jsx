@@ -1,55 +1,81 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input } from "./";
 
-const Colors = ({ handleChange }) => {
+const Colors = ({ value, handleChange }) => {
+  // State to manage the selected color
+  const [selectedColor, setSelectedColor] = useState('');
+
+  // Update the selected color state when the value prop changes
+  useEffect(() => {
+    setSelectedColor(value);
+  }, [value]);
+
+  // Function to handle color change
+  const handleColorChange = (event) => {
+    const newValue = event.target.value;
+    setSelectedColor(newValue);
+    handleChange(event); // Call the parent component's handleChange function
+  };
+
   return (
     <>
       <div>
-        <h2 className="sidebar-title color-title">Colors</h2>
+        <h2 className="sidebar-title">Color</h2>
         <label className="sidebar-label-container">
-          <input onChange={handleChange} type="radio" value="" name="test1" />
+          <input
+            type="radio"
+            value=""
+            name="test1"
+            checked={selectedColor === ''}
+            onChange={handleColorChange}
+          />
           <span className="checkmark all"></span>
-          All
+          Any
         </label>
 
         <Input
-          handleChange={handleChange}
+          handleChange={handleColorChange}
           value="black"
           title="Black"
           name="test1"
           color="black"
+          checked={selectedColor === 'black'}
         />
 
         <Input
-          handleChange={handleChange}
+          handleChange={handleColorChange}
           value="blue"
           title="Blue"
           name="test1"
           color="blue"
+          checked={selectedColor === 'blue'}
         />
 
         <Input
-          handleChange={handleChange}
+          handleChange={handleColorChange}
           value="red"
           title="Red"
           name="test1"
           color="red"
+          checked={selectedColor === 'red'}
         />
 
         <Input
-          handleChange={handleChange}
+          handleChange={handleColorChange}
           value="green"
           title="Green"
           name="test1"
           color="green"
+          checked={selectedColor === 'green'}
         />
 
         <label className="sidebar-label-container">
           <input
-            onChange={handleChange}
             type="radio"
             value="white"
             name="test1"
+            checked={selectedColor === 'white'}
+            onChange={handleColorChange}
           />
           <span
             className="checkmark"

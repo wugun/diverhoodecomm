@@ -2,16 +2,24 @@ import React, { useState } from 'react';
 
 import { useRouter } from 'next/navigation'
 import { preview } from '../assets';
-import { getRandomPrompt } from '../utils';
-import { FormField, Loader } from '../components';
+import { FormField, Loader, Category, Styles, Colors } from '../components';
 
 
 const CreatePost = () => {
   const router = useRouter();
+  
+  const [prompt, setPrompt] = useState('');
+  const [category, setCategory] = useState('');
+  const [style, setStyle] = useState('');
+  const [color, setColor] = useState('');
+
   const [form, setForm] = useState({
     name: '',
     prompt: '',
     photo: '',
+    category: '',
+    color: '',
+    style: '',
   });
 
   const [generatingImg, setGeneratingImg] = useState(false);
@@ -19,12 +27,43 @@ const CreatePost = () => {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
+   // ----------- Radio Filtering -----------
+    const handleCategoryChange = (event) => {
+      setCategory(event.target.value);
+    };
+
+    const handleStyleChange = (event) => {
+      setStyle(event.target.value);
+    };
+
+    const handleColorChange = (event) => {
+      setColor(event.target.value);
+    };
+
   const handleSurpriseMe = () => {
     const randomPrompt = getRandomPrompt(form.prompt);
     setForm({ ...form, prompt: randomPrompt });
   };
 
+  const generatePrompt = () => {
+    if (category && style && color) {
+      setForm({...form, category: category });
+      setForm({...form, style: style });
+      setForm({...form, color: color });
+      return `a ${style} ${color} ${category} in a minimalist room`;
+    } else {
+      return 'Please select a category, style, and color.';
+    }
+  };
+
+  const handleGenerateClick = () => {
+    const prompt = generatePrompt();
+    form.prompt = prompt;
+    console.log(form.prompt);
+  };
+
   const generateImage = async () => {
+    handleGenerateClick();
     if (form.prompt) {
         try {
             setGeneratingImg(true);
@@ -55,6 +94,13 @@ const CreatePost = () => {
       setLoading(true);
 
       try {
+        setForm({
+          ...form,
+          category: category,
+          style: style,
+          color: color
+        });
+        
         const response = await fetch('http://localhost:8080/api/v1/post', {
           method: 'POST',
           headers: {
@@ -62,9 +108,12 @@ const CreatePost = () => {
           },
           body: JSON.stringify(form)
         })
-
         await response.json();
-        router.push("/");
+        console.log(response);
+        console.log(form.color);
+        console.log(form.category);
+        console.log(form.style);
+        //router.push("/");
       } catch (error) {
         alert(error)
       } finally {
@@ -77,9 +126,9 @@ const CreatePost = () => {
 
   return (
     <section className="max-w-7xl mx-auto">
-      <div>
-        <h1 className="font-extrabold text-[#222328] text-[32px]">Create</h1>
-        <p className="mt-2 text-[#666e75] text-[14px] max-w-[500px]">Create and share your furniture design through Surface AI</p>
+      <div className="products-heading">
+        <h2>Visualize</h2>
+        <p>Visualize and share your furniture design through Surface AI</p>
       </div>
 
       <form  className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
@@ -92,17 +141,19 @@ const CreatePost = () => {
                 value={form.name}
                 handleChange={handleChange}
             />
+            <div class="filter-card-container">
+              <div class="filter-card">
+                <Category handleChange={handleCategoryChange} />
+              </div>
+              <div class="filter-card">
+                <Styles handleChange={handleStyleChange} />
+              </div>
+              <div class="filter-card">
+                <Colors handleChange={handleColorChange} />
+              </div>
+            </div>
 
-            <FormField
-                labelName="Prompt"
-                type="text"
-                name="prompt"
-                placeholder="A cozy cashmere chair in a warm modern living room"
-                value={form.prompt}
-                handleChange={handleChange}
-                isSurpriseMe
-                handleSurpriseMe={handleSurpriseMe}
-            />
+            <button onClick={handleGenerateClick}>Generate a prompt</button>
 
             <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center">
                 { form.photo ? (

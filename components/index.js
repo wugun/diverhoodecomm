@@ -9,6 +9,8 @@ export {default as Sidebar} from './Sidebar';
 export {default as Category} from './Category';
 export {default as Price} from './Price';
 export {default as Colors} from './Colors';
+export {default as Styles} from './Styles';
+export {default as RoomTypes} from './RoomTypes';
 export {default as Cart} from './Cart';
 export {default as Card} from './Card';
 export {default as Button} from './Button';
