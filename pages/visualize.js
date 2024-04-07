@@ -109,11 +109,7 @@ const CreatePost = () => {
           body: JSON.stringify(form)
         })
         await response.json();
-        console.log(response);
-        console.log(form.color);
-        console.log(form.category);
-        console.log(form.style);
-        //router.push("/");
+        await router.push("/");
       } catch (error) {
         alert(error)
       } finally {
@@ -153,7 +149,15 @@ const CreatePost = () => {
               </div>
             </div>
 
-            <button onClick={handleGenerateClick}>Generate a prompt</button>
+            <div className="mt-5 flex gap-5">
+              <button
+                type="button"
+                onClick={generateImage}
+                className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              >
+                {generatingImg ? 'Generating...' : 'Generate'}
+              </button>
+            </div>
 
             <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center">
                 { form.photo ? (
@@ -176,16 +180,6 @@ const CreatePost = () => {
                 </div>
                 )}
             </div>
-        </div>
-
-        <div className="mt-5 flex gap-5">
-          <button
-            type="button"
-            onClick={generateImage}
-            className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-          >
-            {generatingImg ? 'Generating...' : 'Generate'}
-          </button>
         </div>
 
         <div className="mt-10">

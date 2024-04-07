@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, FormField, Loader } from './';
+import ReactPaginate from 'react-paginate';
 
 const Showcase = () => {
     const [loading, setLoading] = useState(false);
@@ -8,14 +9,18 @@ const Showcase = () => {
     const [searchText, setSearchText] = useState('');
     const [searchTimeout, setSearchTimeout] = useState(null);
     const [searchedResults, setSearchedResults] = useState(null);
+
+    const [currentPage, setCurrentPage] = useState(0);
+    const itemsPerPage = 12;
   
     const RenderCards = ({ data, title }) => {
-      if (data?.length > 0) {
-        return (
-          data.map((post) => <Card key={post._id} {...post} />)
-        );
-      }
+      const startIndex = currentPage * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentItems = data?.slice(startIndex, endIndex);
     
+      if (currentItems?.length > 0) {
+        return currentItems.map((post) => <Card key={post._id} {...post} />);
+      }
       return (
         <h2 className="mt-5 font-bold text-[#6469ff] text-xl uppercase">{title}</h2>
       );
@@ -60,6 +65,10 @@ const Showcase = () => {
       );
     };
 
+    function handlePageClick(selectedPage) {
+      setCurrentPage(selectedPage.selected);
+    }
+
     return (
       <section className="max-w-7xl mx-auto">
   
@@ -102,6 +111,21 @@ const Showcase = () => {
             </>
           )}
         </div>
+        <div className="mt-4">
+          <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={Math.ceil((searchText ? searchedResults?.length : allPosts?.length) / itemsPerPage)}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+          marginPagesDisplayed={2}
+          containerClassName="pagination"
+          activeClassName="active"
+          />
+        </div>
+
       </section>
     );
 };

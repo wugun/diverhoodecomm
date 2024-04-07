@@ -6,7 +6,7 @@ function Styles({ handleChange }) {
     <div>
       <h2 className="sidebar-title">Style</h2>
 
-      <div>
+      <div className="text-sm">
         <label className="sidebar-label-container">
           <input onChange={handleChange} type="radio" value="" name="test3" />
           <span className="checkmark"></span>Any

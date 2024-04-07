@@ -6,7 +6,7 @@ function RoomTypes({ handleChange }) {
     <div>
       <h2 className="sidebar-title">Room Type</h2>
 
-      <div>
+      <div className="text-sm">
         <label className="sidebar-label-container">
           <input onChange={handleChange} type="radio" value="" name="test4" />
           <span className="checkmark"></span>Any

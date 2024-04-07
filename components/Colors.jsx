@@ -21,68 +21,70 @@ const Colors = ({ value, handleChange }) => {
     <>
       <div>
         <h2 className="sidebar-title">Color</h2>
-        <label className="sidebar-label-container">
-          <input
-            type="radio"
-            value=""
+        <div className="text-sm">
+          <label className="sidebar-label-container">
+            <input
+              type="radio"
+              value=""
+              name="test1"
+              checked={selectedColor === ''}
+              onChange={handleColorChange}
+            />
+            <span className="checkmark all"></span>
+            Any
+          </label>
+
+          <Input
+            handleChange={handleColorChange}
+            value="black"
+            title="Black"
             name="test1"
-            checked={selectedColor === ''}
-            onChange={handleColorChange}
+            color="black"
+            checked={selectedColor === 'black'}
           />
-          <span className="checkmark all"></span>
-          Any
-        </label>
 
-        <Input
-          handleChange={handleColorChange}
-          value="black"
-          title="Black"
-          name="test1"
-          color="black"
-          checked={selectedColor === 'black'}
-        />
-
-        <Input
-          handleChange={handleColorChange}
-          value="blue"
-          title="Blue"
-          name="test1"
-          color="blue"
-          checked={selectedColor === 'blue'}
-        />
-
-        <Input
-          handleChange={handleColorChange}
-          value="red"
-          title="Red"
-          name="test1"
-          color="red"
-          checked={selectedColor === 'red'}
-        />
-
-        <Input
-          handleChange={handleColorChange}
-          value="green"
-          title="Green"
-          name="test1"
-          color="green"
-          checked={selectedColor === 'green'}
-        />
-
-        <label className="sidebar-label-container">
-          <input
-            type="radio"
-            value="white"
+          <Input
+            handleChange={handleColorChange}
+            value="blue"
+            title="Blue"
             name="test1"
-            checked={selectedColor === 'white'}
-            onChange={handleColorChange}
+            color="blue"
+            checked={selectedColor === 'blue'}
           />
-          <span
-            className="checkmark"
-            style={{ background: "white", border: "2px solid black" }}
-          ></span>
-          White
-        </label>
+
+          <Input
+            handleChange={handleColorChange}
+            value="red"
+            title="Red"
+            name="test1"
+            color="red"
+            checked={selectedColor === 'red'}
+          />
+
+          <Input
+            handleChange={handleColorChange}
+            value="green"
+            title="Green"
+            name="test1"
+            color="green"
+            checked={selectedColor === 'green'}
+          />
+
+          <label className="sidebar-label-container">
+            <input
+              type="radio"
+              value="white"
+              name="test1"
+              checked={selectedColor === 'white'}
+              onChange={handleColorChange}
+            />
+            <span
+              className="checkmark"
+              style={{ background: "white", border: "2px solid black" }}
+            ></span>
+            White
+          </label>
+        </div>
       </div>
     </>
   );

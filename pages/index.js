@@ -10,6 +10,13 @@ const Home = ({ products, bannerData }) => {
       <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
 
       <div className="products-heading">
+        <h2>Diver Community Showcase</h2>
+        <p>Get inspired by AI-powered furniture designs from other divers</p>
+      </div>
+      
+      <Showcase />
+
+      <div className="products-heading">
         <h2>Best Selling Products</h2>
         <p>Shop selected furniture from indie sellers</p>
       </div>
@@ -17,13 +24,6 @@ const Home = ({ products, bannerData }) => {
       <div className="products-container">
         {products?.map((product) => <Product key={product._id} product={product}/>)}
       </div>
-
-      <div className="products-heading">
-        <h2>Diver Community Showcase</h2>
-        <p>Get inspired by AI-powered furniture designs from other divers</p>
-      </div>
-      
-      <Showcase />
 
       <FooterBanner footerBanner={bannerData && bannerData[0]} />
     </div>

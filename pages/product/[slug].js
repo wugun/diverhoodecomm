@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 import { client, urlFor } from '@/pages';
 import { Product } from '../../components';
 
 const ProductDetails = ({ product, products }) => {
-  const { image, name, details, price } = product;
+  const { image, name, details, price, productUrl } = product;
   const [index, setIndex] = useState(0);
 
   return (
@@ -26,35 +26,26 @@ const ProductDetails = ({ product, products }) => {
             ))}
           </div>
         </div>
-
-        <div className="product-detail-desc">
-          <h1>{name}</h1>
+        
+        <div className="w-3/4">
+          <h1 className="text-2xl font-bold">{name}</h1>
           <div className="reviews">
-            <div>
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
               <AiOutlineStar />
-            </div>
             <p>
               (20)
             </p>
           </div>
-          <h4>Details: </h4>
+          <h4 className="font-semibold">Details: </h4>
           <p>{details}</p>
-          <p className="price">${price}</p>
-          <div className="quantity">
-            <h3>Quantity:</h3>
-            <p className="quantity-desc">
-              <span className="minus"><AiOutlineMinus /></span>
-              <span className="num">0</span>
-              <span className="plus"><AiOutlinePlus /></span>
-            </p>
-          </div>
-          <div className="buttons">
+          <p className="text-lg font-semibold">${price}</p>
+         
+          <div className="buttons space-x-4">
             <button type="button" className="add-to-cart" >Add to Cart</button>
-            <button type="button" className="buy-now" >Buy Now</button>
+            <a href={productUrl} className="buy-now">Buy Now</a>
           </div>
         </div>
       </div>

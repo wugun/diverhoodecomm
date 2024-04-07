@@ -49,6 +49,11 @@ export default {
         to: [{ type: 'company' }],
       },
       {
+        name: 'productUrl',
+        title: 'Product URL',
+        type: 'url',
+      },
+      {
         name: 'colors',
         title: 'Colors',
         type: 'array',
