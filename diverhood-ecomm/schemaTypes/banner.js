@@ -17,8 +17,13 @@ export default {
             type: 'string',
         },
         {
+            name: 'productName',
+            title: 'Product Name',
+            type: 'string',
+        },
+        {
             name: 'product',
-            title: 'Product',
+            title: 'Product Slug',
             type: 'string',
         },
         {

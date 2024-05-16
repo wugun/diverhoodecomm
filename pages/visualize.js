@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'
 import { preview } from '../assets';
 import { FormField, Loader, Category, Styles, Colors } from '../components';
+import Image from 'next/image';
 
 
 const CreatePost = () => {
@@ -47,9 +48,12 @@ const CreatePost = () => {
 
   const generatePrompt = () => {
     if (category && style && color) {
-      setForm({...form, category: category });
-      setForm({...form, style: style });
-      setForm({...form, color: color });
+      setForm({
+        ...form,
+        category: category,
+        style: style,
+        color: color,
+      });
       return `a ${style} ${color} ${category} in a minimalist room`;
     } else {
       return 'Please select a category, style, and color.';
@@ -94,12 +98,14 @@ const CreatePost = () => {
       setLoading(true);
 
       try {
-        setForm({
-          ...form,
-          category: category,
-          style: style,
-          color: color
-        });
+        
+       form.category = category;
+       form.style = style;
+       form.color = color;
+      
+        console.log(form.category);
+        console.log(form.style);
+        console.log(form.color);
         
         const response = await fetch('http://localhost:8080/api/v1/post', {
           method: 'POST',
@@ -167,7 +173,7 @@ const CreatePost = () => {
                     className="w-full h-full object-contain"
                 />
                 ) : (
-                <img
+                <Image
                     src={preview}
                     alt="preview"
                     className="w-9/12 h-9/12 object-contain opacity-40"

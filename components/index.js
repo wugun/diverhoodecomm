@@ -1,7 +1,9 @@
 export {default as Footer} from './Footer';
 export {default as Layout} from './Layout';
 export {default as Navbar} from './Navbar';
-export {default as Recommended} from './Recommended';
+export {default as Slider} from './Slider';
+export {default as SliderDesc} from './SliderDesc';
+export {default as Recommend} from './Recommend';
 export {default as Product} from './Product';
 export {default as HeroBanner} from './HeroBanner';
 export {default as FooterBanner} from './FooterBanner';

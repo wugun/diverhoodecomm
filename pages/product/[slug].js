@@ -3,6 +3,7 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 import { client, urlFor } from '@/pages';
 import { Product } from '../../components';
+import Link from 'next/link';
 
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price, productUrl } = product;
@@ -45,7 +46,9 @@ const ProductDetails = ({ product, products }) => {
          
           <div className="buttons space-x-4">
             <button type="button" className="add-to-cart" >Add to Cart</button>
-            <a href={productUrl} className="buy-now">Buy Now</a>
+            <Link href={productUrl}>
+                <button className="buy-now">Buy Now</button>
+            </Link>
           </div>
         </div>
       </div>

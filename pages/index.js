@@ -2,12 +2,15 @@ import React from 'react';
 import { createClient } from "next-sanity";
 import imageUrlBuilder from '@sanity/image-url';
 
-import { Product, Showcase, FooterBanner, HeroBanner } from '../components';
+import { Slider, Product, Showcase, FooterBanner, HeroBanner } from '../components';
 
 const Home = ({ products, bannerData }) => {
   return (
     <div>
-      <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
+      <main className="bg-gray-300 rounded-2xl w-full min-h-screen mx-auto grid place-items-center">
+        <Slider heroSlider={bannerData}/>
+      </main>
+      {/* <HeroBanner heroBanner={bannerData.length && bannerData[0]}/> */}
 
       <div className="products-heading">
         <h2>Diver Community Showcase</h2>

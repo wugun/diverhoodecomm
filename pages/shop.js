@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { createClient } from "next-sanity";
 
-import { Category, Colors, Styles, Price, Product } from '../components';
+import { Colors, Styles, Price, Product, Recommend } from '../components';
 
 export const client = createClient({
   projectId: 'w0mar7hm',
@@ -50,10 +50,6 @@ const Shop = ({products}) => {
   );
 
   // ----------- Radio Filtering -----------
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-    updateQueryParams({ category: event.target.value });
-  };
   const handleColorChange = (event) => {
     setSelectedColor(event.target.value);
     updateQueryParams({ color: event.target.value });
@@ -66,6 +62,12 @@ const Shop = ({products}) => {
     setSelectedPrice(event.target.value);
     updateQueryParams({ price: event.target.value });
   };
+
+    // ------------ Button Filtering -----------
+    const handleClick = (event) => {
+      setSelectedCategory(event.target.value);
+      updateQueryParams({ category: event.target.value });
+    };
 
   // Function to update query parameters in the URL
   const updateQueryParams = (params) => {
@@ -126,13 +128,15 @@ const Shop = ({products}) => {
   return (
     <>
       <div className="sidebar">
-        <Category handleChange={handleCategoryChange} />
         <Colors value={selectedColor} handleChange={handleColorChange} />
         <Styles handleChange={handleStyleChange} />
         <Price handleChange={handlePriceChange} />
       </div>
-      <div className="products-container">
-        {filteredResult}
+      <div className="shop-right-container">
+        <Recommend handleClick={handleClick} />
+        <div className="shop-right-products-container">
+          {filteredResult}
+        </div>
       </div>
     </>
   );
