@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Input } from './';
 
-function Category({ handleChange }) {
+function Category({ handleChange, showAny = true }) {
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState('');
 
@@ -35,13 +35,15 @@ function Category({ handleChange }) {
       <h2 className="sidebar-title">Category</h2>
 
       <div className="text-sm">
-        <Input
-          handleChange={handleChange}
-          value="Any"
-          title="Any"
-          name="test"
-          checked={!selectedCategory} // Check if no category is selected
-        />
+        {showAny && (
+          <Input
+            handleChange={handleChange}
+            value="Any"
+            title="Any"
+            name="test"
+            checked={!selectedCategory} // Check if no category is selected
+          />
+        )}
         <Input
           handleChange={handleChange}
           value="Rug"

@@ -145,13 +145,13 @@ const CreatePost = () => {
             />
             <div class="filter-card-container">
               <div class="filter-card">
-                <Category handleChange={handleCategoryChange} />
+                <Category handleChange={handleCategoryChange} showAny={false}/>
               </div>
               <div class="filter-card">
-                <Styles handleChange={handleStyleChange} />
+                <Styles handleChange={handleStyleChange} showAny={false}/>
               </div>
               <div class="filter-card">
-                <Colors handleChange={handleColorChange} />
+                <Colors handleChange={handleColorChange} showAny={false}/>
               </div>
             </div>
 

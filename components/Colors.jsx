@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Input } from "./";
 
-const Colors = ({ value, handleChange }) => {
+const Colors = ({ value, handleChange, showAny = true }) => {
   // State to manage the selected color
   const [selectedColor, setSelectedColor] = useState('');
 
@@ -22,17 +22,19 @@ const Colors = ({ value, handleChange }) => {
       <div>
         <h2 className="sidebar-title">Color</h2>
         <div className="text-sm">
-          <label className="sidebar-label-container">
-            <input
-              type="radio"
-              value=""
-              name="test1"
-              checked={selectedColor === ''}
-              onChange={handleColorChange}
-            />
-            <span className="checkmark all"></span>
-            Any
-          </label>
+          {showAny && (
+            <label className="sidebar-label-container">
+              <input
+                type="radio"
+                value=""
+                name="test1"
+                checked={selectedColor === ''}
+                onChange={handleColorChange}
+              />
+              <span className="checkmark all"></span>
+              Any
+            </label>
+          )}
 
           <Input
             handleChange={handleColorChange}

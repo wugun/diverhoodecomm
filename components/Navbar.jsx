@@ -10,7 +10,7 @@ const Navbar = ({ handleInputChange, query }) => {
         <Link href="/">Diverhood</Link>
       </p>
 
-      <div className="nav-container">
+      {/* <div className="nav-container">
         <input
           className="search-input"
           type="text"
@@ -18,7 +18,7 @@ const Navbar = ({ handleInputChange, query }) => {
           value={query}
           placeholder="Search furniture"
         />
-      </div>
+      </div> */}
 
       <button type="button" className="cart-icon">
         <AiOutlineShopping />

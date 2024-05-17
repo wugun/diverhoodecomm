@@ -1,16 +1,18 @@
 import React from 'react';
 import { Input } from "./";
 
-function Styles({ handleChange }) {
+function Styles({ handleChange, showAny = true }) {
   return (
     <div>
       <h2 className="sidebar-title">Style</h2>
 
       <div className="text-sm">
-        <label className="sidebar-label-container">
-          <input onChange={handleChange} type="radio" value="" name="test3" />
-          <span className="checkmark"></span>Any
-        </label>
+        {showAny && (
+          <label className="sidebar-label-container">
+            <input onChange={handleChange} type="radio" value="" name="test3" />
+            <span className="checkmark"></span>Any
+          </label>
+        )}
         <Input
           handleChange={handleChange}
           value="modern"
