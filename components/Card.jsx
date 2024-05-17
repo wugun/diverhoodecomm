@@ -20,7 +20,11 @@ const Card = ({ _id, name, prompt, photo, category, color, style }) => (
       <div className="mt-5 flex justify-end items-center gap-2">
         <Link href={{
           pathname: '/shop',
-          query: { category: category, color: color, style: style },
+          query: { 
+            category: category ?? '', 
+            color: color ?? '', 
+            style: style ?? '' 
+          },
         }}>
           <button type="button" className="text-xs text-white border-1 border-white bg-transparent py-1 px-2 cursor-pointer hover:bg-white hover:text-black transition-colors duration-300 ml-2">
               Inspire Me

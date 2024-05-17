@@ -46,7 +46,7 @@ const ProductDetails = ({ product, products }) => {
          
           <div className="buttons space-x-4">
             <button type="button" className="add-to-cart" >Add to Cart</button>
-            <Link href={productUrl}>
+            <Link href={productUrl ?? ''}>
                 <button className="buy-now">Buy Now</button>
             </Link>
           </div>
