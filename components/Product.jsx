@@ -4,9 +4,17 @@ import Link from 'next/link';
 import { urlFor } from '@/pages';
 
 const Product = ({product: {image, name, slug, price}}) => {
+  // Safely handle the slug.current value
+  const productSlug = slug?.current ?? '';
+
+  // Avoid rendering the link if productSlug is empty
+  if (!productSlug) {
+    return <p>Product link is not available</p>;
+  }
+
   return (
     <div>
-      <Link href={`/product/${slug.current}`}>
+      <Link href={`/product/${productSlug}`}>
         <div className="product-card">
             <img src={urlFor(image && image[0])}
             width={250}
